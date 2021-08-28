@@ -1,7 +1,7 @@
-import Card from 'atoms/Card';
+import Resume from 'components/Resume';
 
 const Home: React.FC = () => {
-  return <Card />;
+  return <Resume />;
 };
 
 export default Home;
