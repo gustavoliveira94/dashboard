@@ -4,7 +4,7 @@ import { gql } from '@apollo/client';
 
 import { apolloClient } from 'services/graphqlClient';
 
-import { IwealthReducer } from 'store/ducks/wealth';
+import { IwealthReducer } from 'models/Wealth.interface';
 
 export const GET_WEALTH_ID = gql`
   query WealthID($id: Int!) {
