@@ -8,6 +8,4 @@ const rootReducer = combineReducers({
   auth,
 });
 
-export type AppState = ReturnType<typeof rootReducer> | undefined;
-
 export default rootReducer;

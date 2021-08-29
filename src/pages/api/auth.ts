@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import db from 'server/db.json';
+import db from 'services/db/db.json';
 
 const auth = async (req: NextApiRequest, res: NextApiResponse) => {
   const { body } = req;

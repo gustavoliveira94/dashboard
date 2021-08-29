@@ -3,8 +3,9 @@ import thunk from 'redux-thunk';
 import { createWrapper, HYDRATE } from 'next-redux-wrapper';
 
 import { DispatchAction } from 'models/Store.interface';
+import { AppState } from 'models/AppState.interface';
 
-import rootReducer, { AppState } from './rootReducer';
+import rootReducer from './rootReducer';
 
 const combinedReducer = rootReducer;
 

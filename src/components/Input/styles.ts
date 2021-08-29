@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-interface Iinput {
-  ref?: any;
-}
+import { InputProps } from './Input';
 
 export const Container = styled.div`
   display: flex;
@@ -17,12 +15,13 @@ export const Container = styled.div`
   }
 `;
 
-export const Content = styled.input<Iinput>`
+export const Content = styled.input<InputProps>`
   width: 100%;
   height: 40px;
   border-radius: 20px;
   background-color: #fff;
   color: ${({ theme }) => theme.secundary};
-  border: 1px solid ${({ theme }) => theme.secundary};
+  border: 1px solid
+    ${({ theme, error }) => (error ? '#ff4d4f' : theme.secundary)};
   padding: 0 20px;
 `;

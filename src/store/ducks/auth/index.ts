@@ -3,6 +3,7 @@
 import { Dispatch, Action } from 'redux';
 
 import { login } from 'services/request/auth/login';
+import { getUser as recoverUser } from 'services/request/auth/getUser';
 
 import { DispatchAction } from 'models/Store.interface';
 import { Iuser } from 'models/User.interface';
@@ -23,7 +24,7 @@ const initialState = {
     name: '',
     password: ''
   },
-  isLogged: false
+  isLogged: false,
 };
 
 const reducer = (
@@ -37,7 +38,7 @@ const reducer = (
       return {
         ...state,
         user: action.payload,
-        isLogged
+        isLogged,
       };
     }
     default:
@@ -48,6 +49,19 @@ const reducer = (
 export const setLogin = ({ email, password }: Pick<Iuser, 'email' | 'password'>) => {
   return async (dispatch: Dispatch): Promise<Action> => {
     const user = await login({ email, password })
+
+    return dispatch({
+      type: types.GET_USER,
+      payload: user
+    })
+  }
+}
+
+export const getUser = () => {
+  return async (dispatch: Dispatch): Promise<Action> => {
+    const id = Number(localStorage?.getItem('userId'));
+
+    const user = await recoverUser(id);
 
     return dispatch({
       type: types.GET_USER,

@@ -32,6 +32,7 @@ module.exports = {
     '@next/next/no-img-element': 'off',
     'react/jsx-props-no-spreading': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'import/no-cycle': 'off',
     'prettier/prettier': [
       'error',
       {
