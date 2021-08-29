@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export const useForm = () => {
   const [inputs, setInputs] = useState<
@@ -20,11 +20,11 @@ export const useForm = () => {
   };
 
   const validateInput = () => {
-    inputs.map((input) => {
-      if (input?.required && !input.value) {
-        return input?.focus();
-      }
+    const inputFocus: any = inputs.find((input) => {
+      return input?.required && !input?.value;
     });
+
+    return inputFocus?.focus();
   };
 
   const validateForm = () => {
