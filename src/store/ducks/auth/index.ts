@@ -10,6 +10,7 @@ import { Iuser } from 'models/User.interface';
 
 export const types = {
   GET_USER: 'user/GET',
+  REMOVE_USER: 'user/REMOVE',
 };
 
 interface IinitialState {
@@ -41,6 +42,12 @@ const reducer = (
         isLogged,
       };
     }
+    case types.REMOVE_USER: 
+      return {
+        ...state,
+        user: {},
+        isLogged: false,
+      };    
     default:
       return state;
   }
@@ -66,6 +73,15 @@ export const getUser = () => {
     return dispatch({
       type: types.GET_USER,
       payload: user
+    })
+  }
+}
+
+export const logOut = () => {
+  return async (dispatch: Dispatch): Promise<Action> => {
+    return dispatch({
+      type: types.REMOVE_USER,
+      payload: {}
     })
   }
 }
