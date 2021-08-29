@@ -20,11 +20,11 @@ export const useForm = () => {
   };
 
   const validateInput = () => {
-    const inputFocus: any = inputs.find((input) => {
-      return input?.required && !input?.value;
+    inputs.filter((input: any) => {
+      if (input?.required && !input?.value) {
+        return input?.focus();
+      }
     });
-
-    return inputFocus?.focus();
   };
 
   const validateForm = () => {
