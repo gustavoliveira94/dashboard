@@ -2,7 +2,8 @@
 
 ## Descrição
 
-Verifique seus rendimentos em seu resumo no dashboard
+Verifique seus rendimentos em seu resumo no dashboard.
+Visualize online: https://dashboard-sigma-one.vercel.app/login
 
 ## Como entrar
 
