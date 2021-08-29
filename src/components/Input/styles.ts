@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-interface Iinput {
-  ref?: any;
-}
+import { InputProps } from './Input';
 
 export const Container = styled.div`
   display: flex;
@@ -17,7 +15,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Content = styled.input<Iinput>`
+export const Content = styled.input<InputProps>`
   width: 100%;
   height: 40px;
   border-radius: 20px;

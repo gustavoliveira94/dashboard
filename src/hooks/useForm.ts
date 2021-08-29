@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const useForm = () => {
   const [inputs, setInputs] = useState<

@@ -1,5 +1,9 @@
-/* eslint-disable prettier/prettier */
+import { Dispatch, Action } from 'redux';
+
+import { getWealthID as wealthID } from 'services/graphqlClient/queries/wealth';
+
 import { DispatchAction } from 'models/Store.interface';
+import { AppState } from 'models/AppState.interface';
 
 export interface IwealthReducer {
   wealth: {
@@ -7,7 +11,7 @@ export interface IwealthReducer {
     gain: number;
     total: number;
     profitability: number;
-  }
+  };
 }
 
 export const types = {
@@ -19,7 +23,7 @@ const initialState = {
     cdi: 0,
     gain: 0,
     total: 0,
-    profitability: 0
+    profitability: 0,
   },
 };
 
@@ -36,6 +40,22 @@ const reducer = (
     default:
       return state;
   }
+};
+
+export const getWealth = () => {
+  return async (
+    dispatch: Dispatch,
+    getState: () => AppState,
+  ): Promise<Action> => {
+    const { id } = getState()?.auth.user;
+
+    const wealth = await wealthID(id);
+
+    return dispatch({
+      type: types.GET_WEALTH_ID,
+      payload: wealth,
+    });
+  };
 };
 
 export default reducer;

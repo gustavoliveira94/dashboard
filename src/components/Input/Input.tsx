@@ -4,7 +4,7 @@ import { useState, forwardRef } from 'react';
 
 import { Container, Content } from './styles';
 
-interface InputProps {
+export interface InputProps {
   placeholder: string;
   type?: string;
   name: string;
@@ -12,10 +12,11 @@ interface InputProps {
   required: boolean;
   ref?: any;
   value?: string;
+  error?: boolean;
 }
 
 const Input: React.FC<InputProps> = forwardRef(
-  ({ placeholder, type, name, onChange, required }, ref) => {
+  ({ placeholder, type, name, onChange, required, error }, ref) => {
     const [hidden, sethidden] = useState(true);
 
     return (
@@ -27,10 +28,11 @@ const Input: React.FC<InputProps> = forwardRef(
           name={name}
           onChange={onChange}
           required={required}
+          error={error}
         />
         {type === 'password' ? (
           <img
-            src="/icons/eye.closed.svg"
+            src={`/icons/${hidden ? 'eye.closed.svg' : 'eye.icon.svg'}`}
             alt="hidden"
             height={20}
             onClick={() => sethidden(!hidden)}
