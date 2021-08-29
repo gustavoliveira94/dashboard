@@ -8,9 +8,10 @@ interface InputProps {
   placeholder: string;
   type?: string;
   name: string;
-  onChange?: (e: any) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required: boolean;
   ref?: any;
+  value?: string;
 }
 
 const Input: React.FC<InputProps> = forwardRef(

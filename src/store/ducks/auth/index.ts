@@ -1,6 +1,10 @@
+/* eslint-disable no-multi-assign */
 /* eslint-disable prettier/prettier */
-import { DispatchAction } from 'models/Store.interface';
+import { Dispatch, Action } from 'redux';
 
+import { login } from 'services/request/auth/login';
+
+import { DispatchAction } from 'models/Store.interface';
 import { Iuser } from 'models/User.interface';
 
 export const types = {
@@ -8,7 +12,8 @@ export const types = {
 };
 
 interface IinitialState {
-  user: Iuser
+  user: Iuser;
+  isLogged: boolean;
 }
 
 const initialState = {
@@ -18,6 +23,7 @@ const initialState = {
     name: '',
     password: ''
   },
+  isLogged: false
 };
 
 const reducer = (
@@ -25,14 +31,29 @@ const reducer = (
   action: DispatchAction,
 ) => {
   switch (action.type) {
-    case types.GET_USER:
+    case types.GET_USER: {
+      const isLogged = !!Object?.keys(action.payload || {})?.length;
+
       return {
         ...state,
         user: action.payload,
+        isLogged
       };
+    }
     default:
       return state;
   }
 };
+
+export const setLogin = ({ email, password }: Pick<Iuser, 'email' | 'password'>) => {
+  return async (dispatch: Dispatch): Promise<Action> => {
+    const user = await login({ email, password })
+
+    return dispatch({
+      type: types.GET_USER,
+      payload: user
+    })
+  }
+}
 
 export default reducer;

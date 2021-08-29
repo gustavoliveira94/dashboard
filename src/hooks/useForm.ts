@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const useForm = () => {
   const [inputs, setInputs] = useState<
@@ -37,8 +37,18 @@ export const useForm = () => {
     return !!checkError.length;
   };
 
+  const getValues = Object.assign(
+    {},
+    ...inputs.map((input) => {
+      return {
+        [input?.name as string]: input?.value,
+      };
+    }),
+  );
+
   return {
     getInput,
     validateForm,
+    getValues,
   };
 };
