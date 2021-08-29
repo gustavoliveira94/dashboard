@@ -6,6 +6,7 @@ export const Form = styled.form`
   flex-direction: column;
   max-width: 500px;
   width: 100%;
+  padding: 0 15px;
 
   div:first-of-type {
     margin-top: 30px;
