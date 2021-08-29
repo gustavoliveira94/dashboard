@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -5,6 +6,8 @@ import { useRouter } from 'next/router';
 import { setLogin } from 'store/ducks/auth';
 
 import { useForm } from 'hooks/useForm';
+
+import { emailValidation } from 'utils/validations';
 
 import Input from 'components/Input';
 import Paragraph from 'atoms/Paragraph';
@@ -29,6 +32,16 @@ const Login: React.FC = () => {
       router.push('/');
     }
   }, [user, router]);
+
+  const validateEmail =
+    getValues?.email && !emailValidation.test(email)
+      ? 'Por favor, digite um e-mail válido'
+      : '';
+
+  const validatePassword =
+    getValues?.password && password?.length < 6
+      ? 'A senha deve conter np mínimo 6 caracteres!'
+      : '';
 
   return (
     <Form
@@ -62,6 +75,7 @@ const Login: React.FC = () => {
         name="email"
         placeholder="E-mail"
         required
+        error={validateEmail}
       />
       <Input
         ref={(ref: React.InputHTMLAttributes<HTMLInputElement>) =>
@@ -75,6 +89,7 @@ const Login: React.FC = () => {
         type="password"
         placeholder="Senha"
         required
+        error={validatePassword}
       />
       <Button>Entrar</Button>
     </Form>

@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useState, forwardRef } from 'react';
 
-import { Container, Content } from './styles';
+import { Container, Content, Error } from './styles';
 
 export interface InputProps {
   placeholder?: string;
@@ -12,7 +12,7 @@ export interface InputProps {
   required?: boolean;
   ref?: any;
   value?: string;
-  error?: boolean;
+  error?: string;
 }
 
 const Input: React.FC<InputProps> = forwardRef(
@@ -36,10 +36,12 @@ const Input: React.FC<InputProps> = forwardRef(
           <img
             src={`/icons/${hidden ? 'eye.closed.svg' : 'eye.icon.svg'}`}
             alt="hidden"
-            height={20}
+            height={25}
+            width={25}
             onClick={() => sethidden(!hidden)}
           />
         ) : null}
+        <Error>{error}</Error>
       </Container>
     );
   },

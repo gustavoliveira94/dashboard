@@ -4,7 +4,9 @@ import { InputProps } from './Input';
 
 export const Container = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
   position: relative;
   width: 100%;
 
@@ -24,4 +26,11 @@ export const Content = styled.input<InputProps>`
   border: 1px solid
     ${({ theme, error }) => (error ? '#ff4d4f' : theme.secundary)};
   padding: 0 20px;
+`;
+
+export const Error = styled.span`
+  position: absolute;
+  color: #ff4d4f;
+  font-size: 16px;
+  margin-top: 65px;
 `;

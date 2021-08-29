@@ -21,6 +21,8 @@ export const login = async ({
 
     localStorage.setItem('userId', user.id);
 
+    toast.success(`Olá, ${user?.name}. Seja bem vindo!`);
+
     return user;
   } catch (error) {
     toast.error('Usuário não encontrado, e-mail e/ou senha inválidos!');

@@ -10,6 +10,8 @@ import { wrapper } from 'store';
 import { getUser } from 'store/ducks/auth';
 import { AppState } from 'models/AppState.interface';
 
+import Logout from 'components/Logout';
+
 import { GlobalStyles, theme } from 'styles/globals';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -43,6 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Apollo>
       <ThemeProvider theme={theme}>
+        <Logout />
         <Component {...pageProps} />
         <GlobalStyles />
         <ToastContainer />
