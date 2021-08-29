@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 
 import { Apollo } from 'services/graphqlClient';
+import { wrapper } from 'store';
 
 import { GlobalStyles, theme } from 'styles/globals';
 
@@ -15,4 +16,4 @@ function MyApp({ Component, pageProps }: AppProps) {
     </Apollo>
   );
 }
-export default MyApp;
+export default wrapper.withRedux(MyApp);

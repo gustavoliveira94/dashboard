@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 import { apiUrl, apiSecret } from 'services/envs';
 
-const client = new ApolloClient({
+export const apolloClient = new ApolloClient({
   uri: apiUrl,
   headers: {
     'x-hasura-admin-secret': apiSecret as string,
@@ -11,5 +11,5 @@ const client = new ApolloClient({
 });
 
 export const Apollo: React.FC = ({ children }) => {
-  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+  return <ApolloProvider client={apolloClient}>{children}</ApolloProvider>;
 };
