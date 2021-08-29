@@ -4,15 +4,7 @@ import { getWealthID as wealthID } from 'services/graphqlClient/queries/wealth';
 
 import { DispatchAction } from 'models/Store.interface';
 import { AppState } from 'models/AppState.interface';
-
-export interface IwealthReducer {
-  wealth: {
-    cdi: number;
-    gain: number;
-    total: number;
-    profitability: number;
-  };
-}
+import { IwealthReducer } from 'models/Wealth.interface';
 
 export const types = {
   GET_WEALTH_ID: 'wealth_id/GET',

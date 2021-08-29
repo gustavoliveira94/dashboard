@@ -9,7 +9,7 @@ import { useForm } from 'hooks/useForm';
 import Input from 'components/Input';
 import Paragraph from 'atoms/Paragraph';
 
-import { AppState } from 'store/rootReducer';
+import { AppState } from 'models/AppState.interface';
 
 import { Form, Button } from './styles';
 

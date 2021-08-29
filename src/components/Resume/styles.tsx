@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Content = styled.div`
   position: relative;
+  width: 100%;
   width: 345px;
   height: 350px;
   padding: 25px;
@@ -11,6 +12,10 @@ export const Content = styled.div`
     right: 25px;
     top: 30px;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 320px) {
+    width: 290px;
   }
 `;
 

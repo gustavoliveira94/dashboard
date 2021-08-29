@@ -5,27 +5,29 @@ import { useState, forwardRef } from 'react';
 import { Container, Content } from './styles';
 
 export interface InputProps {
-  placeholder: string;
+  placeholder?: string;
   type?: string;
-  name: string;
+  name?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  required: boolean;
+  required?: boolean;
   ref?: any;
   value?: string;
   error?: boolean;
 }
 
 const Input: React.FC<InputProps> = forwardRef(
-  ({ placeholder, type, name, onChange, required, error }, ref) => {
+  ({ placeholder, type, name, onChange, required, error, value }, ref) => {
     const [hidden, sethidden] = useState(true);
 
     return (
       <Container>
         <Content
+          data-testid="input"
           placeholder={placeholder}
           type={hidden ? type : 'text'}
           ref={ref}
           name={name}
+          value={value}
           onChange={onChange}
           required={required}
           error={error}

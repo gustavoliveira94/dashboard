@@ -19,6 +19,8 @@ export const login = async ({
       },
     });
 
+    localStorage.setItem('userId', user.id);
+
     return user;
   } catch (error) {
     toast.error('Usuário não encontrado, e-mail e/ou senha inválidos!');

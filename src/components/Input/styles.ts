@@ -21,6 +21,7 @@ export const Content = styled.input<InputProps>`
   border-radius: 20px;
   background-color: #fff;
   color: ${({ theme }) => theme.secundary};
-  border: 1px solid ${({ theme }) => theme.secundary};
+  border: 1px solid
+    ${({ theme, error }) => (error ? '#ff4d4f' : theme.secundary)};
   padding: 0 20px;
 `;
